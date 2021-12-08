@@ -1,0 +1,69 @@
+﻿@model RedTeamAspire.Models.container1
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>container1</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pond_Key" class="control-label"></label>
+                <input asp-for="Pond_Key" class="form-control" />
+                <span asp-validation-for="Pond_Key" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start_Date" class="control-label"></label>
+                <input asp-for="Start_Date" class="form-control" />
+                <span asp-validation-for="Start_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Intial_Population" class="control-label"></label>
+                <input asp-for="Intial_Population" class="form-control" />
+                <span asp-validation-for="Intial_Population" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Intial_Average_Weight" class="control-label"></label>
+                <input asp-for="Intial_Average_Weight" class="form-control" />
+                <span asp-validation-for="Intial_Average_Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estimated_End_Date" class="control-label"></label>
+                <input asp-for="Estimated_End_Date" class="form-control" />
+                <span asp-validation-for="Estimated_End_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estimated_Harvest_Average_Weight" class="control-label"></label>
+                <input asp-for="Estimated_Harvest_Average_Weight" class="form-control" />
+                <span asp-validation-for="Estimated_Harvest_Average_Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estimated_Survival" class="control-label"></label>
+                <input asp-for="Estimated_Survival" class="form-control" />
+                <span asp-validation-for="Estimated_Survival" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Food_Type" class="control-label"></label>
+                <input asp-for="Food_Type" class="form-control" />
+                <span asp-validation-for="Food_Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

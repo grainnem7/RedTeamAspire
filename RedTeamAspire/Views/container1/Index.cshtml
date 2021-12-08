@@ -1,0 +1,78 @@
+﻿@model IEnumerable<RedTeamAspire.Models.container1>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pond_Key)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Start_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Intial_Population)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Intial_Average_Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estimated_End_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estimated_Harvest_Average_Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estimated_Survival)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food_Type)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pond_Key)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Intial_Population)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Intial_Average_Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estimated_End_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estimated_Harvest_Average_Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estimated_Survival)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food_Type)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
