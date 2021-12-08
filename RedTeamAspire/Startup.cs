@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace RedTeamAspire
 {
@@ -28,6 +29,12 @@ namespace RedTeamAspire
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
+        //public void ConfigureServices(IServiceCollection services)
+        //{
+        //    services.AddControllersWithViews();
+        //    services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
+        //}
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
@@ -41,15 +48,15 @@ namespace RedTeamAspire
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
             services.AddRazorPages()
-                 .AddMicrosoftIdentityUI();
+                     .AddMicrosoftIdentityUI();
 
-            services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
+                services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
 
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -73,7 +80,7 @@ namespace RedTeamAspire
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=container1}/{action=Index}/{id?}");
+                    pattern: "{controller=container1}/{action=Index}/{pk?}");
                 endpoints.MapRazorPages();
             });
         }
@@ -91,7 +98,7 @@ namespace RedTeamAspire
             Microsoft.Azure.Cosmos.CosmosClient client = new Microsoft.Azure.Cosmos.CosmosClient(account, key);
             CosmosDbService cosmosDbService = new CosmosDbService(client, databaseName, containerName);
             Microsoft.Azure.Cosmos.DatabaseResponse database = await client.CreateDatabaseIfNotExistsAsync(databaseName);
-            await database.Database.CreateContainerIfNotExistsAsync(containerName, "/pk");
+            await database.Database.CreateContainerIfNotExistsAsync(containerName, "/pond_key2");
 
             return cosmosDbService;
         }

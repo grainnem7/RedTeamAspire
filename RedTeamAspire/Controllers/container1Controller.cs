@@ -8,10 +8,10 @@ namespace RedTeamAspire.Controllers
     using RedTeamAspire.Models;
     using RedTeamAspire.Services;
 
-    public class ItemController : Controller
+    public class container1Controller : Controller
     {
         private readonly ICosmosDbService _cosmosDbService;
-        public ItemController(ICosmosDbService cosmosDbService)
+        public container1Controller(ICosmosDbService cosmosDbService)
         {
             _cosmosDbService = cosmosDbService;
         }
@@ -30,8 +30,8 @@ namespace RedTeamAspire.Controllers
 
         [HttpPost]
         [ActionName("Create")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateAsync([Bind("Id,Name,Description,Completed")] container1 item)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateAsync([Bind("Pond_Key,Start_Date,Intial_Population,Intial_Average_Weight, Estimated_End_Date,Estimated_Harvest_Average_Weight,Estimated_Survival, Food_Type")] container1 item)
         {
             if (ModelState.IsValid)
             {
@@ -45,8 +45,8 @@ namespace RedTeamAspire.Controllers
 
         [HttpPost]
         [ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditAsync([Bind("Id,Name,Description,Completed")] container1 item)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditAsync([Bind("Pond_Key,Start_Date,Intial_Population,Intial_Average_Weight, Estimated_End_Date,Estimated_Harvest_Average_Weight,Estimated_Survival, Food_Type")] container1 item)
         {
             if (ModelState.IsValid)
             {
@@ -93,8 +93,8 @@ namespace RedTeamAspire.Controllers
 
         [HttpPost]
         [ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmedAsync([Bind("Id")] string id)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmedAsync([Bind("Pond_Key")] string id)
         {
             await _cosmosDbService.DeleteItemAsync(id);
             return RedirectToAction("Index");

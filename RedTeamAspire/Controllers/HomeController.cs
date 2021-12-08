@@ -11,8 +11,13 @@ using System.Threading.Tasks;
 namespace RedTeamAspire.Controllers
 {
     [Authorize]
+
+    
     public class HomeController : Controller
+
     {
+        public string Test() => "test";
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
